@@ -1,0 +1,82 @@
+import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.awt.*;
+/**
+ * Write a description of class Ball here.
+ * 
+ * @author (your name) 
+ * @version (a version number or a date)
+ */
+public class Ball extends Actor
+{
+    private static final int SIZE = 20;
+    private static int velocity = 0;
+    
+    public Ball()
+    {
+        GreenfootImage ballImage = new GreenfootImage( SIZE, SIZE );
+        ballImage.setColor(Color.WHITE);
+        ballImage.fillOval(0, 0, SIZE, SIZE);
+        setImage(ballImage);
+        turn(236);
+        
+    }
+    
+    /**
+     * Act - do whatever the Ball wants to do. This method is called whenever
+     * the 'Act' or 'Run' button gets pressed in the environment.
+     */
+    public void act() 
+    {
+        // Add your action code here.
+        PlayField world = (PlayField)getWorld();
+        
+        if(world.getStarted() == true)
+        {
+            checkCollision();
+            move(velocity);
+        }
+    }    
+    
+    public void checkCollision()
+    {
+        PlayField world = (PlayField)getWorld();
+        Paddle hitting = (Paddle)getOneIntersectingObject(Paddle.class);
+        Score getPoint = (Score)getOneIntersectingObject(Score.class);
+        
+        if(hitting != null)
+        {
+            velocity = -velocity;
+            
+            setRotation( -getRotation() );
+            move(velocity);
+        }
+        
+        if(getY() <= 10)
+        {
+            setRotation( -getRotation() );
+        }
+        else if(getY() >= 590 )
+        {
+            setRotation( -getRotation() );
+        }
+        
+        if(getX() <= 10 )
+        {
+            getPoint = (Score) getWorld().getObjects(Score.class).get(1);
+            getPoint.countScore();
+            world.reset();
+        }
+        
+        if(getX() >= 790 )
+        {
+            getPoint = (Score) getWorld().getObjects(Score.class).get(0);
+            getPoint.countScore();
+            world.reset();
+        }
+    }
+
+    public void setVelocity( int v )
+    {
+        velocity = v;
+    }
+}

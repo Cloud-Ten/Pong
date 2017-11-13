@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.target=Score
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Score\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=left
+comment1.target=Score(boolean)
+comment2.params=
+comment2.target=void\ displayScore()
+comment3.params=
+comment3.target=void\ act()
+comment3.text=\r\n\ Act\ -\ do\ whatever\ the\ Score\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+comment4.params=
+comment4.target=boolean\ getScoreChanged()
+comment5.params=
+comment5.target=void\ countScore()
+comment6.params=
+comment6.target=int\ getScore()
+numComments=7
